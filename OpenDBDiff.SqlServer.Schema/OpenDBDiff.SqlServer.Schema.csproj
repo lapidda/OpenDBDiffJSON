@@ -1,21 +1,18 @@
-﻿ <Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <LangVersion>7</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-
   <ItemGroup>
     <Using Remove="System.Net.Http" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.3" />
-    <PackageReference Include="TSQL.Parser" Version="1.5.2" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <PackageReference Include="TSQL.Parser" Version="2.6.0" />
     <Compile Include="..\OpenDBDiff\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
     <ProjectReference Include="..\OpenDBDiff.Abstractions.Schema\OpenDBDiff.Abstractions.Schema.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="SQLQueries\GetAssemblies.sql" />
     <EmbeddedResource Include="SQLQueries\GetAssemblyFiles.sql" />
@@ -41,5 +38,4 @@
     <EmbeddedResource Include="SQLQueries\GetTriggers.SQLServerAzure10.sql" />
     <EmbeddedResource Include="SQLQueries\GetXMLSchemaCollections.sql" />
   </ItemGroup>
-
 </Project>

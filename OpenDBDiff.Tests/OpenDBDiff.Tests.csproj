@@ -1,22 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <LangVersion>7</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
     <Using Remove="System.Net.Http" />
-    <PackageReference Include="MicrosoftVisualStudioQualityToolsUnitTestFramework" Version="1.0.0" />
-    <PackageReference Include="Moq" Version="4.7.145" />
+    <PackageReference Include="MicrosoftVisualStudioQualityToolsUnitTestFramework" Version="1.0.2" />
+    <PackageReference Include="Moq" Version="4.20.72" />
     <Compile Include="..\OpenDBDiff\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
     <ProjectReference Include="..\OpenDBDiff.SqlServer.Schema\OpenDBDiff.SqlServer.Schema.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="SqlSnippets\Triggers\broken.sql" />
     <EmbeddedResource Include="SqlSnippets\Triggers\no-brackets.sql" />
@@ -24,5 +21,4 @@
     <EmbeddedResource Include="SqlSnippets\Triggers\normalized.sql" />
     <EmbeddedResource Include="SqlSnippets\Triggers\with-comments.sql" />
   </ItemGroup>
-
 </Project>
