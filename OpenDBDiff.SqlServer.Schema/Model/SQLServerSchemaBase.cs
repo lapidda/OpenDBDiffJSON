@@ -11,6 +11,6 @@ namespace OpenDBDiff.SqlServer.Schema.Model
             ExtendedProperties = new SchemaList<ExtendedProperty, ISchemaBase>(parent);
         }
 
-        public SchemaList<ExtendedProperty, ISchemaBase> ExtendedProperties { get; private set; }
+        public SchemaList<ExtendedProperty, ISchemaBase> ExtendedProperties { get; set; }
     }
 }

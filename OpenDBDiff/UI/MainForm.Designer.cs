@@ -361,7 +361,7 @@ namespace OpenDBDiff.UI
             this.PanelGlobal.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelGlobal.Location = new System.Drawing.Point(0, 0);
             this.PanelGlobal.Name = "PanelGlobal";
-            this.PanelGlobal.Size = new System.Drawing.Size(940, 175);
+            this.PanelGlobal.Size = new System.Drawing.Size(940, 210);
             this.PanelGlobal.TabIndex = 10;
             // 
             // tableLayoutPanel1
@@ -382,7 +382,7 @@ namespace OpenDBDiff.UI
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 172);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 210);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // LeftDatabasePanel
@@ -390,7 +390,7 @@ namespace OpenDBDiff.UI
             this.LeftDatabasePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LeftDatabasePanel.Location = new System.Drawing.Point(3, 3);
             this.LeftDatabasePanel.Name = "LeftDatabasePanel";
-            this.LeftDatabasePanel.Size = new System.Drawing.Size(401, 166);
+            this.LeftDatabasePanel.Size = new System.Drawing.Size(401, 210);
             this.LeftDatabasePanel.TabIndex = 10;
             // 
             // RightDatabasePanel
@@ -398,7 +398,7 @@ namespace OpenDBDiff.UI
             this.RightDatabasePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RightDatabasePanel.Location = new System.Drawing.Point(450, 3);
             this.RightDatabasePanel.Name = "RightDatabasePanel";
-            this.RightDatabasePanel.Size = new System.Drawing.Size(401, 166);
+            this.RightDatabasePanel.Size = new System.Drawing.Size(401, 210);
             this.RightDatabasePanel.TabIndex = 11;
             // 
             // toolMenu
@@ -462,7 +462,7 @@ namespace OpenDBDiff.UI
             this.SwapButton.Image = global::OpenDBDiff.Properties.Resources.arrow_ew;
             this.SwapButton.Location = new System.Drawing.Point(410, 3);
             this.SwapButton.Name = "SwapButton";
-            this.SwapButton.Size = new System.Drawing.Size(34, 166);
+            this.SwapButton.Size = new System.Drawing.Size(34, 210);
             this.SwapButton.TabIndex = 12;
             this.toolTip1.SetToolTip(this.SwapButton, "Swap source and destination");
             this.SwapButton.UseVisualStyleBackColor = true;

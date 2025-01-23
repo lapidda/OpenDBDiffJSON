@@ -31,190 +31,253 @@ namespace OpenDBDiff.SqlServer.Ui
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboServer = new System.Windows.Forms.ComboBox();
-            this.cboAuthentication = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cboDatabase = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.btnTest = new System.Windows.Forms.Button();
-            this.lblName = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.gradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
-            //
+            txtPassword = new TextBox();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            cboServer = new ComboBox();
+            cboAuthentication = new ComboBox();
+            label5 = new Label();
+            cboDatabase = new ComboBox();
+            label6 = new Label();
+            txtUsername = new TextBox();
+            btnTest = new Button();
+            lblName = new Label();
+            gradientPanel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            btnJSONExport = new Button();
+            btnJSONImport = new Button();
+            lblJSONPath = new Label();
+            textBox1 = new TextBox();
+            gradientPanel1.SuspendLayout();
+            ((ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
             // txtPassword
-            //
-            this.txtPassword.Location = new System.Drawing.Point(82, 107);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(180, 20);
-            this.txtPassword.TabIndex = 3;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
-            //
+            // 
+            txtPassword.Location = new System.Drawing.Point(109, 165);
+            txtPassword.Margin = new Padding(4, 5, 4, 5);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new System.Drawing.Size(239, 27);
+            txtPassword.TabIndex = 3;
+            txtPassword.TextChanged += txtPassword_TextChanged;
+            // 
             // label4
-            //
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Password:";
-            //
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(4, 169);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(73, 20);
+            label4.TabIndex = 16;
+            label4.Text = "Password:";
+            // 
             // label3
-            //
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Username:";
-            //
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(4, 129);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(78, 20);
+            label3.TabIndex = 15;
+            label3.Text = "Username:";
+            // 
             // label2
-            //
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Server Host:";
-            //
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(4, 48);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(88, 20);
+            label2.TabIndex = 14;
+            label2.Text = "Server Host:";
+            // 
             // cboServer
-            //
-            this.cboServer.FormattingEnabled = true;
-            this.cboServer.Items.AddRange(new object[] {
-            "(local)"});
-            this.cboServer.Location = new System.Drawing.Point(82, 28);
-            this.cboServer.Name = "cboServer";
-            this.cboServer.Size = new System.Drawing.Size(180, 21);
-            this.cboServer.TabIndex = 0;
-            this.cboServer.SelectedIndexChanged += new System.EventHandler(this.cboServer_SelectedIndexChanged);
-            this.cboServer.DropDown += new System.EventHandler(this.cboServer_DropDown);
-            this.cboServer.TextChanged += new System.EventHandler(this.cboServer_TextChanged);
-            //
+            // 
+            cboServer.FormattingEnabled = true;
+            cboServer.Items.AddRange(new object[] { "(local)" });
+            cboServer.Location = new System.Drawing.Point(109, 43);
+            cboServer.Margin = new Padding(4, 5, 4, 5);
+            cboServer.Name = "cboServer";
+            cboServer.Size = new System.Drawing.Size(239, 28);
+            cboServer.TabIndex = 0;
+            cboServer.DropDown += cboServer_DropDown;
+            cboServer.SelectedIndexChanged += cboServer_SelectedIndexChanged;
+            cboServer.TextChanged += cboServer_TextChanged;
+            // 
             // cboAuthentication
-            //
-            this.cboAuthentication.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAuthentication.FormattingEnabled = true;
-            this.cboAuthentication.Items.AddRange(new object[] {
-            "Windows Authentication",
-            "SQL Server Authentication"});
-            this.cboAuthentication.Location = new System.Drawing.Point(82, 55);
-            this.cboAuthentication.Name = "cboAuthentication";
-            this.cboAuthentication.Size = new System.Drawing.Size(180, 21);
-            this.cboAuthentication.TabIndex = 1;
-            this.cboAuthentication.SelectedIndexChanged += new System.EventHandler(this.cboAuthentication_SelectedIndexChanged);
-            //
+            // 
+            cboAuthentication.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboAuthentication.FormattingEnabled = true;
+            cboAuthentication.Items.AddRange(new object[] { "Windows Authentication", "SQL Server Authentication" });
+            cboAuthentication.Location = new System.Drawing.Point(109, 85);
+            cboAuthentication.Margin = new Padding(4, 5, 4, 5);
+            cboAuthentication.Name = "cboAuthentication";
+            cboAuthentication.Size = new System.Drawing.Size(239, 28);
+            cboAuthentication.TabIndex = 1;
+            cboAuthentication.SelectedIndexChanged += cboAuthentication_SelectedIndexChanged;
+            // 
             // label5
-            //
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Authentication";
-            //
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(4, 89);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(106, 20);
+            label5.TabIndex = 20;
+            label5.Text = "Authentication";
+            // 
             // cboDatabase
-            //
-            this.cboDatabase.FormattingEnabled = true;
-            this.cboDatabase.Location = new System.Drawing.Point(82, 133);
-            this.cboDatabase.Name = "cboDatabase";
-            this.cboDatabase.Size = new System.Drawing.Size(223, 21);
-            this.cboDatabase.TabIndex = 4;
-            this.cboDatabase.DropDown += new System.EventHandler(this.cboDatabase_DropDown);
-            //
+            // 
+            cboDatabase.FormattingEnabled = true;
+            cboDatabase.Location = new System.Drawing.Point(109, 205);
+            cboDatabase.Margin = new Padding(4, 5, 4, 5);
+            cboDatabase.Name = "cboDatabase";
+            cboDatabase.Size = new System.Drawing.Size(296, 28);
+            cboDatabase.TabIndex = 4;
+            cboDatabase.DropDown += cboDatabase_DropDown;
+            // 
             // label6
-            //
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 136);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Database:";
-            //
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(4, 209);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(75, 20);
+            label6.TabIndex = 23;
+            label6.Text = "Database:";
+            // 
             // txtUsername
-            //
-            this.txtUsername.Location = new System.Drawing.Point(82, 81);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(180, 20);
-            this.txtUsername.TabIndex = 2;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
-            //
+            // 
+            txtUsername.Location = new System.Drawing.Point(109, 125);
+            txtUsername.Margin = new Padding(4, 5, 4, 5);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new System.Drawing.Size(239, 27);
+            txtUsername.TabIndex = 2;
+            txtUsername.TextChanged += txtUsername_TextChanged;
+            // 
             // btnTest
-            //
-            this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTest.Location = new System.Drawing.Point(327, 126);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(54, 28);
-            this.btnTest.TabIndex = 5;
-            this.btnTest.Text = "Test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            //
+            // 
+            btnTest.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTest.FlatStyle = FlatStyle.System;
+            btnTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnTest.Location = new System.Drawing.Point(384, 37);
+            btnTest.Margin = new Padding(4, 5, 4, 5);
+            btnTest.Name = "btnTest";
+            btnTest.Size = new System.Drawing.Size(124, 43);
+            btnTest.TabIndex = 5;
+            btnTest.Text = "Test Connection";
+            btnTest.UseVisualStyleBackColor = true;
+            btnTest.Click += btnTest_Click;
+            // 
             // lblName
-            //
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(17, 5);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(105, 13);
-            this.lblName.TabIndex = 24;
-            this.lblName.Text = "Source Database";
-            //
+            // 
+            lblName.AutoSize = true;
+            lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblName.Location = new System.Drawing.Point(23, 8);
+            lblName.Margin = new Padding(4, 0, 4, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new System.Drawing.Size(133, 17);
+            lblName.TabIndex = 24;
+            lblName.Text = "Source Database";
+            // 
             // gradientPanel1
-            //
-            this.gradientPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.gradientPanel1.Controls.Add(this.pictureBox1);
-            this.gradientPanel1.Controls.Add(this.lblName);
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(384, 24);
-            this.gradientPanel1.TabIndex = 26;
-            //
+            // 
+            gradientPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gradientPanel1.Controls.Add(pictureBox1);
+            gradientPanel1.Controls.Add(lblName);
+            gradientPanel1.Location = new System.Drawing.Point(0, 0);
+            gradientPanel1.Margin = new Padding(4, 5, 4, 5);
+            gradientPanel1.Name = "gradientPanel1";
+            gradientPanel1.Size = new System.Drawing.Size(512, 37);
+            gradientPanel1.TabIndex = 26;
+            // 
             // pictureBox1
-            //
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::OpenDBDiff.SqlServer.Ui.Properties.Resources.database_yellow;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(15, 18);
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            //
+            // 
+            pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            pictureBox1.Image = Properties.Resources.database_yellow;
+            pictureBox1.Location = new System.Drawing.Point(3, 5);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(20, 28);
+            pictureBox1.TabIndex = 27;
+            pictureBox1.TabStop = false;
+            // 
+            // btnJSONExport
+            // 
+            btnJSONExport.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnJSONExport.FlatStyle = FlatStyle.System;
+            btnJSONExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnJSONExport.Location = new System.Drawing.Point(436, 173);
+            btnJSONExport.Margin = new Padding(4, 5, 4, 5);
+            btnJSONExport.Name = "btnJSONExport";
+            btnJSONExport.Size = new System.Drawing.Size(72, 43);
+            btnJSONExport.TabIndex = 27;
+            btnJSONExport.Text = "JSON Export";
+            btnJSONExport.UseVisualStyleBackColor = true;
+            btnJSONExport.Click += btnJSONExport_Click;
+            // 
+            // btnJSONImport
+            // 
+            btnJSONImport.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnJSONImport.FlatStyle = FlatStyle.System;
+            btnJSONImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnJSONImport.Location = new System.Drawing.Point(436, 226);
+            btnJSONImport.Margin = new Padding(4, 5, 4, 5);
+            btnJSONImport.Name = "btnJSONImport";
+            btnJSONImport.Size = new System.Drawing.Size(72, 43);
+            btnJSONImport.TabIndex = 28;
+            btnJSONImport.Text = "JSON Import";
+            btnJSONImport.UseVisualStyleBackColor = true;
+            // 
+            // lblJSONPath
+            // 
+            lblJSONPath.AutoSize = true;
+            lblJSONPath.Location = new System.Drawing.Point(4, 245);
+            lblJSONPath.Margin = new Padding(4, 0, 4, 0);
+            lblJSONPath.Name = "lblJSONPath";
+            lblJSONPath.Size = new System.Drawing.Size(79, 20);
+            lblJSONPath.TabIndex = 29;
+            lblJSONPath.Text = "JSON Path:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(109, 242);
+            textBox1.Margin = new Padding(4, 5, 4, 5);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(296, 27);
+            textBox1.TabIndex = 30;
+            // 
             // SqlServerConnectFront
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.gradientPanel1);
-            this.Controls.Add(this.cboDatabase);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnTest);
-            this.Controls.Add(this.cboAuthentication);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.cboServer);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Name = "SqlServerConnectFront";
-            this.Size = new System.Drawing.Size(384, 156);
-            this.gradientPanel1.ResumeLayout(false);
-            this.gradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            // 
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.White;
+            Controls.Add(textBox1);
+            Controls.Add(lblJSONPath);
+            Controls.Add(btnJSONImport);
+            Controls.Add(btnJSONExport);
+            Controls.Add(gradientPanel1);
+            Controls.Add(cboDatabase);
+            Controls.Add(label6);
+            Controls.Add(btnTest);
+            Controls.Add(cboAuthentication);
+            Controls.Add(label5);
+            Controls.Add(cboServer);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "SqlServerConnectFront";
+            Size = new System.Drawing.Size(512, 282);
+            gradientPanel1.ResumeLayout(false);
+            gradientPanel1.PerformLayout();
+            ((ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -233,5 +296,9 @@ namespace OpenDBDiff.SqlServer.Ui
         private Label lblName;
         private Panel gradientPanel1;
         private PictureBox pictureBox1;
+        private Button btnJSONExport;
+        private Button btnJSONImport;
+        private Label lblJSONPath;
+        private TextBox textBox1;
     }
 }

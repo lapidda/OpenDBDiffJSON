@@ -17,8 +17,7 @@ namespace OpenDBDiff.Extensions
             scintilla.StyleClearAll();
 
             // Set the SQL Lexer
-            scintilla.Lexer = Lexer.Sql;
-
+            scintilla.LexerLanguage = "MSSQL";
             // Set the Styles
             scintilla.Styles[Style.Sql.Identifier].ForeColor = Color.SeaGreen;
             scintilla.Styles[Style.LineNumber].ForeColor = Color.FromArgb(255, 128, 128, 128);  //Dark Gray

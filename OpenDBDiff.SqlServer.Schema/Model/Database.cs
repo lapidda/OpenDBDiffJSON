@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace OpenDBDiff.SqlServer.Schema.Model
 {
@@ -42,70 +44,71 @@ namespace OpenDBDiff.SqlServer.Schema.Model
             ActionMessage = new SqlAction(this);
         }
 
-        internal SearchSchemaBase AllObjects { get; private set; }
+        internal SearchSchemaBase AllObjects { get; set; }
 
         [SchemaNode("Full Text Catalog", "FullText")]
-        public SchemaList<FullText, Database> FullText { get; private set; }
+        public SchemaList<FullText, Database> FullText { get; set; }
 
         [SchemaNode("Table Type", "Table")]
-        public SchemaList<TableType, Database> TablesTypes { get; private set; }
+        public SchemaList<TableType, Database> TablesTypes { get; set; }
 
         [SchemaNode("Partition Scheme", "PartitionScheme")]
-        public SchemaList<PartitionScheme, Database> PartitionSchemes { get; private set; }
+        public SchemaList<PartitionScheme, Database> PartitionSchemes { get; set; }
 
         [SchemaNode("Partition Functions", "PartitionFunction")]
-        public SchemaList<PartitionFunction, Database> PartitionFunctions { get; private set; }
+        public SchemaList<PartitionFunction, Database> PartitionFunctions { get; set; }
 
         [SchemaNode("Defaults")]
-        public SchemaList<Default, Database> Defaults { get; private set; }
+        public SchemaList<Default, Database> Defaults { get; set; }
 
         [SchemaNode("Roles", "Rol")]
-        public SchemaList<Role, Database> Roles { get; private set; }
+        public SchemaList<Role, Database> Roles { get; set; }
 
         [SchemaNode("Functions", "Function", true)]
-        public SchemaList<Function, Database> Functions { get; private set; }
+        public SchemaList<Function, Database> Functions { get; set; }
 
         [SchemaNode("Users", "User")]
-        public SchemaList<User, Database> Users { get; private set; }
+        public SchemaList<User, Database> Users { get; set; }
 
         [SchemaNode("Views", "View", true)]
-        public SchemaList<View, Database> Views { get; private set; }
+        public SchemaList<View, Database> Views { get; set; }
 
         [SchemaNode("Assemblies", "Assembly")]
-        public SchemaList<Assembly, Database> Assemblies { get; private set; }
+        public SchemaList<Assembly, Database> Assemblies { get; set; }
 
         [SchemaNode("Synonyms", "Assembly")] // We don't have an icon for synonyms at the moment.
-        public SchemaList<Synonym, Database> Synonyms { get; private set; }
+        public SchemaList<Synonym, Database> Synonyms { get; set; }
 
         [SchemaNode("DLL Triggers")]
-        public SchemaList<Trigger, Database> DDLTriggers { get; private set; }
+        public SchemaList<Trigger, Database> DDLTriggers { get; set; }
 
         [SchemaNode("File Groups")]
-        public SchemaList<FileGroup, Database> FileGroups { get; private set; }
+        public SchemaList<FileGroup, Database> FileGroups { get; set; }
 
         [SchemaNode("Rules")]
-        public SchemaList<Rule, Database> Rules { get; private set; }
+        public SchemaList<Rule, Database> Rules { get; set; }
 
         [SchemaNode("Stored Procedures", "Procedure", true)]
-        public SchemaList<StoredProcedure, Database> Procedures { get; private set; }
+        public SchemaList<StoredProcedure, Database> Procedures { get; set; }
 
         [SchemaNode("CLR Stored Procedures", "CLRProcedure", true)]
-        public SchemaList<CLRStoredProcedure, Database> CLRProcedures { get; private set; }
+        public SchemaList<CLRStoredProcedure, Database> CLRProcedures { get; set; }
 
         [SchemaNode("CLR Functions", "CLRFunction", true)]
-        public SchemaList<CLRFunction, Database> CLRFunctions { get; private set; }
+        public SchemaList<CLRFunction, Database> CLRFunctions { get; set; }
 
         [SchemaNode("Schemas", "Schema")]
-        public SchemaList<Schema, Database> Schemas { get; private set; }
+        public SchemaList<Schema, Database> Schemas { get; set; }
 
         [SchemaNode("XML Schemas", "XMLSchema")]
-        public SchemaList<XMLSchema, Database> XmlSchemas { get; private set; }
+        public SchemaList<XMLSchema, Database> XmlSchemas { get; set; }
 
         [SchemaNode("Tables", "Table", true)]
-        public SchemaList<Table, Database> Tables { get; private set; }
+        [JsonInclude]
+        public SchemaList<Table, Database> Tables { get; set; }
 
         [SchemaNode("User Types", "UDT")]
-        public SchemaList<UserDataType, Database> UserTypes { get; private set; }
+        public SchemaList<UserDataType, Database> UserTypes { get; set; }
 
         public SqlOption Options { get; set; }
         IOption IDatabase.Options { get { return Options; } }
@@ -153,7 +156,7 @@ namespace OpenDBDiff.SqlServer.Schema.Model
             return item;
         }
 
-        public SqlAction ActionMessage { get; private set; }
+        public SqlAction ActionMessage { get; set; }
 
         public Boolean IsCaseSensitive
         {
@@ -195,6 +198,28 @@ namespace OpenDBDiff.SqlServer.Schema.Model
             sql += PartitionFunctions.ToSql();
             sql += FullText.ToSql();
             return sql;
+        }
+
+        public string ToJson()
+        {
+            var options = new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                IncludeFields = true,
+
+            };
+            return JsonSerializer.Serialize(this,options);
+        }
+
+        public static Database FromJson(String jsonContent)
+        {
+            var options = new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                IncludeFields = true,
+
+            };
+            return JsonSerializer.Deserialize<Database>(jsonContent,options);
         }
 
         public override SQLScriptList ToSqlDiff(ICollection<ISchemaBase> schemas)

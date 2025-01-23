@@ -3,6 +3,11 @@ using OpenDBDiff.SqlServer.Ui.Util;
 using OpenDBDiff.Abstractions.Ui;
 using System;
 using System.Windows.Forms;
+using OpenDBDiff.SqlServer.Schema.Model;
+using OpenDBDiff.Abstractions.Schema.Model;
+using OpenDBDiff.SqlServer.Schema.Options;
+using System.IO;
+using System.Text;
 
 namespace OpenDBDiff.SqlServer.Ui
 {
@@ -79,7 +84,7 @@ namespace OpenDBDiff.SqlServer.Ui
             {
                 using (SqlConnection connection = new SqlConnection())
                 {
-                    connection.ConnectionString = this.ConnectionString;
+                    connection.ConnectionString = BuildConnectionString(ServerName, DatabaseName);
                     connection.Open();
                     connection.Close();
                     return true;
@@ -94,16 +99,18 @@ namespace OpenDBDiff.SqlServer.Ui
 
         private string BuildConnectionString(string server, string database)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = server.Trim();
+            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            //builder.DataSource = server.Trim();
 
-            // if database is ommitted the connection will be established to the default database for the user
-            if (!string.IsNullOrEmpty(database))
-                builder.InitialCatalog = database.Trim();
+            //// if database is ommitted the connection will be established to the default database for the user
+            //if (!string.IsNullOrEmpty(database))
+            //    builder.InitialCatalog = database.Trim();
 
-            builder.IntegratedSecurity = true;
-            builder.TrustServerCertificate = true;
-            return builder.ConnectionString;
+            //builder.IntegratedSecurity = true;
+            //builder.TrustServerCertificate = true;
+            //return builder.ConnectionString;
+            return String.Format("Server={0};Database={1};Trusted_Connection=True;TrustServerCertificate=True;", server, database);
+
         }
 
         private string BuildConnectionString(string server, string database, string username, string password)
@@ -334,6 +341,35 @@ namespace OpenDBDiff.SqlServer.Ui
                 this.UseWindowsAuthentication = sql.UseWindowsAuthentication;
                 this.UserName = sql.UserName;
                 this.Password = sql.Password;
+            }
+        }
+
+        private void btnJSONExport_Click(object sender, EventArgs e)
+        {
+            IGenerator gen = new SQLServerGenerator(ConnectionString, new SqlOption());
+            IDatabase db = gen.Process();
+            var json = db.ToJson();
+            saveJSON(json);
+        }
+
+        private void saveJSON(string json)
+        {
+
+            FileStream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = (FileStream)saveFileDialog1.OpenFile()) != null)
+                {
+                    // Code to write the stream goes here.
+                    myStream.Write(Encoding.Unicode.GetBytes(json));
+                    myStream.Close();
+                }
             }
         }
     }

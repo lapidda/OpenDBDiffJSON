@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace OpenDBDiff.Abstractions.Schema.Model
 {
@@ -26,6 +27,8 @@ namespace OpenDBDiff.Abstractions.Schema.Model
         SQLScript Drop();
         int CompareFullNameTo(string name, string myName);
         Boolean IsCodeType { get; }
+
+        [JsonIgnore]
         IDatabase RootParent { get; }
     }
 }

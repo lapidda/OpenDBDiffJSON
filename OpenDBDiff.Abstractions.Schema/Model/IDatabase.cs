@@ -10,5 +10,7 @@ namespace OpenDBDiff.Abstractions.Schema.Model
 
         new SQLScriptList ToSqlDiff(ICollection<ISchemaBase> selectedSchemas);
         ISchemaBase Find(string objectFullName);
+
+        string ToJson();
     }
 }

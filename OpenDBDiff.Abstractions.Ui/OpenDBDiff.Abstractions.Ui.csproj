@@ -10,6 +10,7 @@
   <ItemGroup>
     <Using Remove="System.Net.Http" />
     <Compile Include="..\OpenDBDiff\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
+    <PackageReference Include="System.Text.Json" Version="9.0.1" />
     <ProjectReference Include="..\OpenDBDiff.Abstractions.Schema\OpenDBDiff.Abstractions.Schema.csproj" />
   </ItemGroup>
 </Project>

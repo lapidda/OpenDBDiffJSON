@@ -75,7 +75,7 @@ namespace OpenDBDiff.UI
                     // Notice again that left is destination, because we generated scripts to migrate the right database to the left.
                     schemaTreeView1.LeftDatabase = progress.Destination;
                     schemaTreeView1.RightDatabase = progress.Origin;
-
+                    
                     schemaTreeView1.OnSelectItem += new SchemaTreeView.SchemaHandler(schemaTreeView1_OnSelectItem);
                     schemaTreeView1_OnSelectItem(schemaTreeView1.SelectedNode);
                     textBox1.Text = progress.Origin.ActionMessage.Message;
@@ -249,6 +249,7 @@ namespace OpenDBDiff.UI
                 _selectedSchemas = schemaTreeView1.GetCheckedSchemas();
                 StartComparison();
                 schemaTreeView1.SetCheckedSchemas(_selectedSchemas);
+
                 errorLocation = "Saving Connections";
                 Project.SaveLastConfiguration(LeftDatabaseSelector.ConnectionString, RightDatabaseSelector.ConnectionString);
             }
